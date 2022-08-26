@@ -3,13 +3,9 @@
 {
   imports =
     [
-      # Include the results of the hardware scan.
       ./env.nix
-      ./hardware-configuration.nix
-      ./home/home.nix
       ./windowmanager.nix
       ./packages.nix
-      ./neovim/neovim.nix
     ];
 
   nixpkgs.config.allowUnfree = true;
@@ -18,9 +14,6 @@
 
   networking = {
     hostName = "kaesemondwikinger"; # Define your hostname.
-    useDHCP = false;
-    interfaces.enp2s0.useDHCP = true;
-    interfaces.wlp3s0.useDHCP = true;
   };
 
   # Select internationalisation properties.

@@ -13,14 +13,13 @@
 
     # input
     libinput.enable = true;
-    layout = "de";
 
     displayManager = {
       lightdm.enable = true;
-      autoLogin = {
-        enable = true;
-        user = "kwik";
-      };
+      # autoLogin = {
+      #   enable = true;
+      #   user = "kwik";
+      # };
       defaultSession = "none+i3";
     };
 
@@ -31,7 +30,6 @@
     windowManager = {
       i3 = {
         enable = true;
-        package = pkgs.i3-gaps;
         configFile = "/etc/i3.conf";
         extraPackages = with pkgs; [
           rofi
@@ -42,5 +40,4 @@
   };
 
   environment.etc."i3.conf".source = ./i3conf.config;
-
 }

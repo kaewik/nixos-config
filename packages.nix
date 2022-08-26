@@ -13,17 +13,12 @@ in
       (import "${fetchTarball "https://github.com/nix-community/fenix/archive/main.tar.gz"}/overlay.nix")
     ];
 
-  programs.adb.enable = true;
-
   environment.systemPackages = with pkgs;
     [
       # apps
       alacritty
-      discord
 
       # cli utils
-      bat
-      binutils
       delta
       jq
       fd
@@ -31,6 +26,7 @@ in
       git
       git-lfs
       lsof
+      neovim
       ripgrep
       tree
       unzip
@@ -38,34 +34,7 @@ in
       zsh
 
       # ui
-      brightnessctl
       i3lock-fancy
       mypolybar
-
-      # stuff
-      clang
-      lld
-      lldb
-      killall
-      pkg-config
-      wget
-      wpa_supplicant
-      usbutils
-      graphviz
-
-      # audio
-      pamixer
-
-      # rust
-      rustup
-      rust-analyzer
-
-      # haskell
-      stack
-      ghc
-      haskell-language-server
-
-      # javascript 
-      nodejs
     ];
 }
