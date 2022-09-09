@@ -17,6 +17,7 @@ in
     [
       # apps
       alacritty
+      firefox
 
       # cli utils
       delta

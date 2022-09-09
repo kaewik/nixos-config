@@ -16,10 +16,6 @@
 
     displayManager = {
       lightdm.enable = true;
-      # autoLogin = {
-      #   enable = true;
-      #   user = "kwik";
-      # };
       defaultSession = "none+i3";
     };
 
@@ -34,6 +30,7 @@
         extraPackages = with pkgs; [
           rofi
           feh
+	  polybar
         ];
       };
     };

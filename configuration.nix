@@ -5,6 +5,7 @@
     [
       ./env.nix
       ./windowmanager.nix
+      ./polybar.nix
       ./packages.nix
     ];
 
