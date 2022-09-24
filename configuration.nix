@@ -4,9 +4,10 @@
   imports =
     [
       ./env.nix
-      ./windowmanager.nix
-      ./polybar.nix
+      ./home.nix
       ./packages.nix
+      ./polybar.nix
+      ./windowmanager.nix
     ];
 
   nixpkgs.config.allowUnfree = true;
@@ -28,13 +29,6 @@
     corefonts
     (pkgs.nerdfonts.override { fonts = [ "Meslo" "Iosevka" ]; })
   ];
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.defaultUserShell = pkgs.zsh;
-  users.users.kwik = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "audio" "realtime" "docker" ];
-  };
 
   system.stateVersion = "22.05";
 
