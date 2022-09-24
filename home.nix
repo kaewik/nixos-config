@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 let
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-22.05.tar.gz";
+  nvim = (import ./nvim.nix) pkgs;
 in
 {
   imports = [
@@ -21,6 +22,11 @@ in
       userEmail = "32685131+kaewik@users.noreply.github.com";
     };
 
-    /* Here goes your home-manager config, eg home.packages = [ pkgs.foo ]; */
+    home.packages = nvim.dependencies;
+
+    xdg.configFile."nvim" = {
+      source = nvim.configPath;
+      recursive = true;
+    };
   };
 }

@@ -11,6 +11,7 @@
     ];
 
   nixpkgs.config.allowUnfree = true;
+  nix.settings.auto-optimise-store = true;
 
   time.timeZone = "Europe/Berlin";
 

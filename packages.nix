@@ -24,6 +24,7 @@ in
       jq
       fd
       fzf
+      gcc
       git
       git-lfs
       lsof
