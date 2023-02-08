@@ -11,8 +11,14 @@
     ];
 
   nixpkgs.config.allowUnfree = true;
-  nix.settings.auto-optimise-store = true;
 
+  nix = {
+    package = pkgs.nixUnstable;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+      '';
+    settings.auto-optimise-store = true;
+  };
   time.timeZone = "Europe/Berlin";
 
   networking = {
