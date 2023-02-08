@@ -1,18 +1,9 @@
 { config, pkgs, ... }:
 let
-<<<<<<< HEAD
-  home-manager = builtins.fetchTarball {
-    url = "https://github.com/nix-community/home-manager/archive/release-22.05.tar.gz";
-    sha256 = "408b643caf784dc2bc7a50e383592712131186c516273d2c3c80a9c3ef88e673";
-  }
-||||||| parent of dfc92bf (Use flakes)
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-22.05.tar.gz";
-=======
   home-manager = builtins.fetchTarball {
     url = "https://github.com/nix-community/home-manager/archive/release-22.05.tar.gz";
     sha256 = "408b643caf784dc2bc7a50e383592712131186c516273d2c3c80a9c3ef88e673";
   };
->>>>>>> dfc92bf (Use flakes)
   nvim = (import ./nvim.nix) pkgs;
 in
 {
