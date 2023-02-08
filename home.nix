@@ -1,6 +1,9 @@
 { config, pkgs, ... }:
 let
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-22.05.tar.gz";
+  home-manager = builtins.fetchTarball {
+    url = "https://github.com/nix-community/home-manager/archive/release-22.05.tar.gz";
+    sha256 = "408b643caf784dc2bc7a50e383592712131186c516273d2c3c80a9c3ef88e673";
+  }
   nvim = (import ./nvim.nix) pkgs;
 in
 {

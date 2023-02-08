@@ -1,6 +1,10 @@
 { pkgs, ... }:
 let
   unstable = import <nixos-unstable> { };
+  fenixTarball = fetchTarball {
+    url = "https://github.com/nix-community/fenix/archive/main.tar.gz";
+    sha256 = "c3910de723c6740cfc455d154ff73d0135f51b60d36b99d93c6ddf5bfeed2822";
+  };
 in
 {
   nixpkgs.overlays = with pkgs;
@@ -10,7 +14,7 @@ in
           i3Support = true;
         };
       })
-      (import "${fetchTarball "https://github.com/nix-community/fenix/archive/main.tar.gz"}/overlay.nix")
+      (import "${fenixTarball}/overlay.nix")
     ];
 
   environment.systemPackages = with pkgs;
