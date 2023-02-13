@@ -3,7 +3,7 @@ let
   unstable = import <nixos-unstable> { };
   fenixTarball = fetchTarball {
     url = "https://github.com/nix-community/fenix/archive/main.tar.gz";
-    sha256 = "151sbf5f354bd0l1634x7i9swgrpgwdcbmkrhjg052302xm1h07r";
+    sha256 = "19gv0rrjnzw6fydx9c7v11fr9jl18fz110cr4310xyjmfpvyck7z";
   };
 in
 {

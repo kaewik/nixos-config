@@ -5,7 +5,6 @@
     [
       ./env.nix
       ./hardware-configuration.nix
-      ./home.nix
       ./packages.nix
       ./polybar.nix
       ./windowmanager.nix
@@ -20,7 +19,17 @@
       '';
     settings.auto-optimise-store = true;
   };
+
   time.timeZone = "Europe/Berlin";
+
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users = {
+    defaultUserShell = pkgs.zsh;
+    users.kaewik = {
+      isNormalUser = true;
+      extraGroups = [ "wheel" "audio" "realtime" "docker" ];
+    };
+  };
 
   networking = {
     hostName = "kaesemondwikinger"; # Define your hostname.
