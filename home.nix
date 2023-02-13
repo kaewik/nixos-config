@@ -2,7 +2,7 @@
 let
   home-manager = builtins.fetchTarball {
     url = "https://github.com/nix-community/home-manager/archive/release-22.05.tar.gz";
-    sha256 = "408b643caf784dc2bc7a50e383592712131186c516273d2c3c80a9c3ef88e673";
+    sha256 = "0vg6x7cw2bpiga9k6nlj2n1vrm4qw84721gmlhp3j1i58v100ybc";
   };
   nvim = (import ./nvim.nix) pkgs;
 in
@@ -18,6 +18,8 @@ in
     extraGroups = [ "wheel" "audio" "realtime" "docker" ];
   };
 
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
   home-manager.users.kaewik = {
     programs.git = {
       enable = true;
