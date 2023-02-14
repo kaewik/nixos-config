@@ -33,6 +33,7 @@
       },
       "original": {
         "owner": "kaewik",
+        "ref": "master",
         "repo": "neovim-config",
         "type": "github"
       }
