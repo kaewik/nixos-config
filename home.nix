@@ -3,9 +3,6 @@
   home = {
     username = "kaewik";
     homeDirectory = "/home/kaewik";
-    packages = [
-      neovimConfig
-    ];
     stateVersion = "22.11";
   };
   programs = {
@@ -17,5 +14,7 @@
     };
   };
 
-  xdg.configFile."nvim".source = neovimConfig;
+  xdg.configFile."nvim" = {
+    source = neovimConfig;
+  };
 }

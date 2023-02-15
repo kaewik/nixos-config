@@ -30,7 +30,7 @@
         extraPackages = with pkgs; [
           rofi
           feh
-	  polybar
+          polybar
         ];
       };
     };

@@ -1,23 +1,15 @@
-{ pkgs, ... }:
-let
-  unstable = import <nixos-unstable> { };
-  fenixTarball = fetchTarball {
-    url = "https://github.com/nix-community/fenix/archive/main.tar.gz";
-    sha256 = "19gv0rrjnzw6fydx9c7v11fr9jl18fz110cr4310xyjmfpvyck7z";
-  };
-in
+{ config, pkgs, lib, ... }:
 {
-  nixpkgs.overlays = with pkgs;
-    [
-      (self: super: {
-        mypolybar = polybar.override {
-          i3Support = true;
-        };
-      })
-      (import "${fenixTarball}/overlay.nix")
-    ];
-
-  environment.systemPackages = with pkgs;
+  options = {
+    fenix = lib.mkOption {
+      type = lib.types.package;
+    };
+    mypolybar = lib.mkOption {
+      type = lib.types.package;
+    };
+  };
+  config = {
+    environment.systemPackages = with pkgs;
     [
       # apps
       alacritty
@@ -42,5 +34,16 @@ in
       # ui
       i3lock-fancy
       mypolybar
+
+      # rust tools
+      (config.fenix.packages.x86_64-linux.complete.withComponents [
+        "cargo"
+        "clippy"
+        "rust-src"
+        "rustc"
+        "rustfmt"
+      ])
+      rust-analyzer-nightly
     ];
+  };
 }
