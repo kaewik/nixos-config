@@ -13,6 +13,7 @@
     [
       # apps
       alacritty
+      bitwarden
       firefox
 
       # cli utils

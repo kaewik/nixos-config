@@ -12,9 +12,10 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # neovim-config
-    neovim-config.url = "github:kaewik/neovim-config/master";
-    neovim-config.flake = false;
+   # neovim-config.url = "github:kaewik/neovim-config/master";
+   # neovim-config.flake = false;
 
+    neovim-config.url = "github:jordanisaacs/neovim-flake";
     # fenix - rust tool chain
     fenix.url = "github:nix-community/fenix";
     fenix.inputs.nixpkgs.follows = "nixpkgs";
@@ -35,7 +36,9 @@
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.kaewik = import ./home.nix { neovimConfig=neovim-config; };
+          home-manager.users.kaewik = import ./home.nix {
+	    neovimConfig=neovim-config;
+	  };
         }
       ];
     };
