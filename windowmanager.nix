@@ -1,9 +1,12 @@
-{ pkgs, config, ... }:
 {
+  pkgs,
+  config,
+  ...
+}: {
   # High DPI settings
   # hardware.video.hidpi.enable = true;
 
-  environment.pathsToLink = [ "/libexec" ];
+  environment.pathsToLink = ["/libexec"];
 
   services.xserver = {
     # general settings
@@ -29,7 +32,6 @@
         configFile = "/etc/i3.conf";
         extraPackages = with pkgs; [
           rofi
-          feh
           polybar
         ];
       };
