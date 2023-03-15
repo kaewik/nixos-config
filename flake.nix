@@ -11,6 +11,7 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    # Neovim Flake
     neovim-flake.url = "github:kaewik/neovim-flake";
 
     # fenix - rust tool chain
@@ -33,6 +34,7 @@
       modules = [
         {
           fenix = fenix;
+          neovim = neovim-flake.packages.x86_64-linux.default;
         }
         ./overlays.nix
         ./configuration.nix
@@ -40,21 +42,9 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.kaewik = import ./home.nix {
-            neovimConfig = neovim-flake;
-          };
+          home-manager.users.kaewik = import ./home.nix;
         }
       ];
     };
-
-    # You can define many systems in one Flake file.
-    # NixOS will choose one based on your hostname.
-    #
-    # nixosConfigurations."nixos2" = nixpkgs.lib.nixosSystem {
-    #   system = "x86_64-linux";
-    #   modules = [
-    #     ./configuration2.nix
-    #   ];
-    # };
   };
 }
