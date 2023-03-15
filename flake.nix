@@ -11,18 +11,21 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    # neovim-config
-   # neovim-config.url = "github:kaewik/neovim-config/master";
-   # neovim-config.flake = false;
+    neovim-flake.url = "github:kaewik/neovim-flake";
 
-    neovim-config.url = "github:jordanisaacs/neovim-flake";
     # fenix - rust tool chain
     fenix.url = "github:nix-community/fenix";
     fenix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   # Output config, or config for NixOS system
-  outputs = { nixpkgs, home-manager, neovim-config, fenix, ... }@inputs: {
+  outputs = {
+    nixpkgs,
+    home-manager,
+    neovim-flake,
+    fenix,
+    ...
+  } @ inputs: {
     defaultPackage.x86_64-linux = fenix.packages.x86_64-linux.minimal.toolchain;
     # Define a system called "nixos"
     nixosConfigurations."kaesemondwikinger" = nixpkgs.lib.nixosSystem {
@@ -33,12 +36,13 @@
         }
         ./overlays.nix
         ./configuration.nix
-        home-manager.nixosModules.home-manager {
+        home-manager.nixosModules.home-manager
+        {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.kaewik = import ./home.nix {
-	    neovimConfig=neovim-config;
-	  };
+            neovimConfig = neovim-flake;
+          };
         }
       ];
     };
