@@ -21,6 +21,7 @@
       alacritty
       bitwarden
       firefox
+      google-chrome
       slack
 
       # cli utils
@@ -32,7 +33,7 @@
       git
       git-lfs
       lsof
-      neovim
+      config.neovim
       ripgrep
       tree
       unzip
