@@ -64,7 +64,7 @@
       preLVM = true;
       allowDiscards = true;
     };
-
+    boot.supportedFilesystems = ["ntfs"];
     system.stateVersion = "22.05";
   };
 }
